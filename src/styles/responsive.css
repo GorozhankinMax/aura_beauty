@@ -363,17 +363,18 @@
   }
 
   .page {
-    margin: 22px auto;
+    margin: 0 auto;
   }
 
   .hero-panel {
     --hero-mobile-pad-x: 22px;
+    --hero-mobile-flow-gap: clamp(20px, 4.6vw, 28px);
     --hero-mobile-image-width: clamp(320px, 104vw, 440px);
     --hero-mobile-image-max: none;
     --hero-mobile-image-right: calc(var(--hero-mobile-pad-x) * -1);
     --hero-mobile-stat-height: clamp(82px, 12svh, 108px);
     --hero-mobile-stats-gap: 10px;
-    --hero-mobile-image-gap: clamp(4px, 2vw, 14px);
+    --hero-mobile-image-gap: clamp(1px, 0.7vw, 5px);
     --hero-mobile-image-bottom: calc(24px + (var(--hero-mobile-stat-height) * 2) + var(--hero-mobile-stats-gap) + var(--hero-mobile-image-gap));
     --hero-mobile-image-opacity: 0.24;
     min-height: calc(100svh - 44px);
@@ -396,7 +397,7 @@
   .hero-layout {
     display: flex;
     position: relative;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     min-height: 0;
     flex-direction: column;
     align-items: stretch;
@@ -421,10 +422,9 @@
     z-index: 3;
     display: grid;
     justify-items: center;
-    gap: clamp(20px, 4.6vw, 28px);
-    margin-top: auto;
-    padding-top: clamp(20px, 5vw, 34px);
-    padding-bottom: clamp(12px, 3.4vw, 22px);
+    gap: var(--hero-mobile-flow-gap);
+    margin-top: clamp(22px, 5.4vw, 34px);
+    padding: 0;
   }
 
   .hero-action-group .hero-actions {
@@ -492,7 +492,7 @@
     gap: var(--hero-mobile-stats-gap);
     width: 100%;
     flex: 0 0 auto;
-    margin: 0;
+    margin: var(--hero-mobile-flow-gap) 0 0;
     overflow: visible;
     border-radius: 0;
     background: transparent;
@@ -693,7 +693,7 @@
 
   .page {
     width: var(--section-width);
-    margin: 10px auto;
+    margin: 0 auto;
   }
 
   .hero-panel,
@@ -722,11 +722,12 @@
 
   .hero-panel {
     --hero-mobile-pad-x: 16px;
+    --hero-mobile-flow-gap: clamp(14px, 3.8vw, 22px);
     --hero-mobile-image-width: clamp(310px, 101vw, 420px);
     --hero-mobile-image-max: none;
     --hero-mobile-stat-height: clamp(72px, 11svh, 92px);
     --hero-mobile-stats-gap: 8px;
-    --hero-mobile-image-gap: clamp(2px, 1.8vw, 10px);
+    --hero-mobile-image-gap: clamp(0px, 0.6vw, 3px);
     min-height: calc(100svh - 20px);
     height: auto;
   }
@@ -900,7 +901,7 @@
   .hero-panel {
     --hero-mobile-image-width: clamp(300px, 96vw, 390px);
     --hero-mobile-stat-height: 68px;
-    --hero-mobile-image-gap: 8px;
+    --hero-mobile-image-gap: 2px;
   }
 
   .hero-copy {

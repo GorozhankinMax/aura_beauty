@@ -178,15 +178,15 @@
   left: 0;
   z-index: 2;
   display: grid;
-  height: 80dvh;
-  max-height: 80dvh;
+  height: min(80svh, calc(100svh - 96px - env(safe-area-inset-bottom)));
+  max-height: min(80svh, calc(100svh - 96px - env(safe-area-inset-bottom)));
   min-height: 0;
   align-content: stretch;
   justify-items: center;
   gap: clamp(22px, 4vw, 34px);
   overflow: hidden;
   overscroll-behavior: contain;
-  padding: clamp(70px, 13vw, 116px) 24px clamp(34px, 8vw, 72px);
+  padding: clamp(70px, 13vw, 116px) 24px calc(clamp(34px, 8vw, 72px) + env(safe-area-inset-bottom));
   border-radius: clamp(20px, 5vw, var(--radius));
   background-color: rgba(235, 214, 197, 0.97);
   box-shadow: 0 18px 42px rgba(82, 42, 25, 0.08);

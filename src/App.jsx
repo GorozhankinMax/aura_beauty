@@ -322,6 +322,7 @@ function App() {
 
   useEffect(() => {
     if (!isServicesModalOpen) return undefined;
+    const scrollY = window.scrollY;
 
     const closeOnEscape = (event) => {
       if (event.key === "Escape") {
@@ -330,10 +331,21 @@ function App() {
     };
 
     document.body.classList.add("modal-open");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
     window.addEventListener("keydown", closeOnEscape);
 
     return () => {
       document.body.classList.remove("modal-open");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [isServicesModalOpen]);
@@ -562,10 +574,10 @@ function App() {
           </div>
           <div className="masters-controls" aria-label="Навигация по мастерам">
             <button type="button" onClick={() => scrollMasters(-1)} disabled={mastersScrollState.atStart} aria-label="Предыдущие мастера">
-              ←
+              <span aria-hidden="true">←</span>
             </button>
             <button type="button" onClick={() => scrollMasters(1)} disabled={mastersScrollState.atEnd} aria-label="Следующие мастера">
-              →
+              <span aria-hidden="true">→</span>
             </button>
           </div>
         </div>
@@ -598,10 +610,10 @@ function App() {
           </div>
           <div className="gallery-controls" aria-label="Навигация по работам">
             <button type="button" onClick={() => changeWork(-1)} disabled={workIndex === 0} aria-label="Предыдущие работы">
-              ←
+              <span aria-hidden="true">←</span>
             </button>
             <button type="button" onClick={() => changeWork(1)} disabled={workIndex === maxWorkIndex} aria-label="Следующие работы">
-              →
+              <span aria-hidden="true">→</span>
             </button>
           </div>
         </div>

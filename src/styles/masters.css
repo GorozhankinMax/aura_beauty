@@ -41,22 +41,29 @@
 }
 
 .masters-controls button {
-  display: inline-flex;
+  display: grid;
   width: 48px;
   height: 48px;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
   border: 1px solid rgba(255, 244, 234, 0.46);
   border-radius: 999px;
   color: var(--text);
   background: transparent;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 0;
   line-height: 1;
   transition:
     transform 0.35s var(--ease),
     border-color 0.35s var(--ease),
     background-color 0.35s var(--ease);
+}
+
+.masters-controls button span {
+  display: block;
+  transform: translateY(-1px);
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .masters-controls button:hover {

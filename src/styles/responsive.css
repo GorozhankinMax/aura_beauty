@@ -370,8 +370,11 @@
     --hero-mobile-pad-x: 22px;
     --hero-mobile-image-width: clamp(360px, 120vw, 500px);
     --hero-mobile-image-max: none;
-    --hero-mobile-image-top: clamp(210px, 32svh, 300px);
     --hero-mobile-image-right: calc(var(--hero-mobile-pad-x) * -1);
+    --hero-mobile-stat-height: clamp(82px, 12svh, 108px);
+    --hero-mobile-stats-gap: 10px;
+    --hero-mobile-image-gap: clamp(12px, 3.5vw, 24px);
+    --hero-mobile-image-bottom: calc(24px + (var(--hero-mobile-stat-height) * 2) + var(--hero-mobile-stats-gap) + var(--hero-mobile-image-gap));
     --hero-mobile-image-opacity: 0.24;
     min-height: calc(100svh - 44px);
     height: auto;
@@ -462,15 +465,15 @@
       Единый блок управления hero-изображением на mobile:
       --hero-mobile-image-width   — размер изображения;
       --hero-mobile-image-max     — максимальный размер;
-      --hero-mobile-image-top     — положение сверху внутри секции;
       --hero-mobile-image-right   — сдвиг от правого края секции;
+      --hero-mobile-image-bottom  — расстояние от низа секции с учётом stats;
       --hero-mobile-image-opacity — прозрачность.
       Изображение absolute и находится за текстом, кнопками и статистикой.
     */
     position: absolute;
-    top: var(--hero-mobile-image-top);
+    top: auto;
     right: var(--hero-mobile-image-right);
-    bottom: auto;
+    bottom: var(--hero-mobile-image-bottom);
     z-index: 1;
     width: var(--hero-mobile-image-width);
     max-width: var(--hero-mobile-image-max);
@@ -484,7 +487,7 @@
   .stats-strip {
     z-index: 4;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: var(--hero-mobile-stats-gap);
     width: 100%;
     flex: 0 0 auto;
     margin: auto 0 0;
@@ -498,7 +501,7 @@
   .stat:nth-child(3),
   .stat:nth-child(4),
   .stat:nth-child(even) {
-    min-height: clamp(82px, 12svh, 108px);
+    min-height: var(--hero-mobile-stat-height);
     grid-template-columns: clamp(28px, 8.5vw, 34px) 1fr;
     gap: clamp(8px, 2.2vw, 10px);
     border-left: 0;
@@ -719,7 +722,9 @@
     --hero-mobile-pad-x: 16px;
     --hero-mobile-image-width: clamp(340px, 112vw, 450px);
     --hero-mobile-image-max: none;
-    --hero-mobile-image-top: clamp(192px, 31svh, 260px);
+    --hero-mobile-stat-height: clamp(72px, 11svh, 92px);
+    --hero-mobile-stats-gap: 8px;
+    --hero-mobile-image-gap: clamp(8px, 2.8vw, 18px);
     min-height: calc(100svh - 20px);
     height: auto;
   }
@@ -892,7 +897,8 @@
 @media (max-width: 420px) and (max-height: 720px) {
   .hero-panel {
     --hero-mobile-image-width: clamp(330px, 106vw, 420px);
-    --hero-mobile-image-top: clamp(182px, 30svh, 220px);
+    --hero-mobile-stat-height: 68px;
+    --hero-mobile-image-gap: 8px;
   }
 
   .hero-copy {

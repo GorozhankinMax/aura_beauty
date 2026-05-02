@@ -377,7 +377,7 @@
     --hero-mobile-stats-gap: 10px;
     --hero-mobile-image-stats-gap: clamp(140px, 10vw, 160px);
     --hero-mobile-image-opacity: 0.24;
-    min-height: calc(100svh + 20px);
+    min-height: calc(120svh + 0px);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -729,7 +729,7 @@
     --hero-mobile-image-max: none;
     --hero-mobile-stat-height: 76px;
     --hero-mobile-stats-gap: 8px;
-    min-height: calc(100svh + 20px);
+    min-height: calc(120svh + 0px);
     height: auto;
   }
 
@@ -739,8 +739,8 @@
   }
 
   .mobile-menu {
-    height: min(80svh, calc(100svh - 88px - env(safe-area-inset-bottom)));
-    max-height: min(80svh, calc(100svh - 88px - env(safe-area-inset-bottom)));
+    height: 80svh;
+    max-height: 80svh;
     gap: clamp(9px, 2svh, 14px);
     padding: clamp(22px, 5svh, 34px) 18px calc(clamp(16px, 3.5svh, 22px) + env(safe-area-inset-bottom));
   }
@@ -931,8 +931,8 @@
   }
 
   .mobile-menu {
-    height: min(80svh, calc(100svh - 82px - env(safe-area-inset-bottom)));
-    max-height: min(80svh, calc(100svh - 82px - env(safe-area-inset-bottom)));
+    height: 80svh;
+    max-height: 80svh;
     gap: clamp(8px, 1.8svh, 12px);
     padding-top: clamp(16px, 4svh, 24px);
     padding-bottom: calc(clamp(12px, 2.8svh, 18px) + env(safe-area-inset-bottom));

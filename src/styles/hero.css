@@ -178,8 +178,8 @@
   left: 0;
   z-index: 2;
   display: grid;
-  height: min(80svh, calc(100svh - 96px - env(safe-area-inset-bottom)));
-  max-height: min(80svh, calc(100svh - 96px - env(safe-area-inset-bottom)));
+  height: 80svh;
+  max-height: 80svh;
   min-height: 0;
   align-content: stretch;
   justify-items: center;

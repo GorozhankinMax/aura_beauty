@@ -1,0 +1,98 @@
+/* Общие кнопки сайта. Тени у внутренних элементов специально отключены. */
+.topbar-button,
+.primary-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 10px;
+  color: #fff6ee;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--terracotta);
+  box-shadow: none;
+  transition:
+    transform 0.35s var(--ease),
+    background-color 0.35s var(--ease);
+}
+
+/* Тонкая бумажная фактура на терракотовых кнопках, как на референсе. */
+.topbar-button::before,
+.primary-button::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background-image: var(--paper-texture);
+  background-position: center;
+  background-size: var(--button-texture-size);
+  opacity: 0.82;
+  mix-blend-mode: multiply;
+}
+
+.topbar-button {
+  min-width: 110px;
+  min-height: 40px;
+}
+
+.primary-button {
+  min-height: 52px;
+  padding: 0 28px;
+}
+
+.primary-button--small {
+  min-height: 44px;
+  padding: 0 24px;
+}
+
+.topbar-button:hover,
+.primary-button:hover {
+  transform: translateY(-2px);
+  background-color: var(--terracotta-dark);
+}
+
+.inline-link {
+  position: relative;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.inline-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: currentColor;
+}
+
+.ghost-button {
+  display: flex;
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 28px auto 0;
+  padding: 0 34px;
+  border: 1px solid rgba(255, 244, 234, 0.42);
+  border-radius: 9px;
+  color: #fff4ea;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    border-color 0.3s var(--ease),
+    background-color 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.ghost-button:hover {
+  border-color: rgba(255, 244, 234, 0.72);
+  background-color: rgba(255, 244, 234, 0.06);
+  transform: translateY(-2px);
+}

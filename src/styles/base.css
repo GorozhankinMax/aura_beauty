@@ -1,0 +1,88 @@
+/* Базовые правила страницы и общий контейнер сайта. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  color: var(--text);
+  font-family: "Manrope", "Inter", Arial, sans-serif;
+  background-color: var(--bg);
+}
+
+/* Еле заметная бумажная фактура на общем заднем фоне страницы. */
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background-image: var(--paper-texture);
+  background-repeat: repeat;
+  background-size: var(--page-texture-size);
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+/* Общая ширина сайта. Чтобы сделать все секции шире/уже, меняй 1880px. */
+.page {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(14px, 1.4vw, 22px);
+  width: var(--section-width);
+  margin: clamp(18px, 2.6vw, 34px) auto;
+}
+
+/* Общий стиль крупных секций. Тень регулируется в variables.css. */
+.hero-panel,
+.portfolio-panel,
+.about-panel,
+.masters-panel,
+.gallery-panel,
+.process-panel,
+.reviews-panel,
+.contact-panel,
+.footer-panel {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--section-shadow);
+}
+
+.eyebrow,
+.section-label {
+  margin: 0;
+  color: var(--terracotta-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.hero-copy h1,
+.panel-head h2,
+.about-copy h2,
+.section-head h2,
+.contact-copy h2 {
+  margin: 18px 0 0;
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}

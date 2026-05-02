@@ -1,0 +1,86 @@
+/* Секция отзывов. */
+.reviews-panel {
+  margin-top: 0;
+  padding: clamp(26px, 4vw, 42px);
+  background: var(--paper);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+
+.review-card {
+  position: relative;
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--paper-soft);
+  padding: 26px;
+  transition:
+    transform 0.55s var(--ease),
+    box-shadow 0.55s var(--ease);
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 46px rgba(82, 42, 25, 0.13);
+}
+
+.review-quote {
+  display: block;
+  height: 38px;
+  color: var(--terracotta);
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-size: 68px;
+  line-height: 0.7;
+}
+
+.review-card p {
+  margin: 18px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+.review-author span {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #fff6ee;
+  background: var(--terracotta);
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.review-author div {
+  display: grid;
+  gap: 3px;
+}
+
+.review-author strong {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.review-author small {
+  color: var(--muted);
+  font-size: 13px;
+}

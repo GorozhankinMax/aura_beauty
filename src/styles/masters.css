@@ -1,0 +1,203 @@
+/* Секция мастеров: компактная горизонтальная лента с перемоткой стрелками. */
+.masters-panel {
+  margin-top: 0;
+  padding: clamp(26px, 4vw, 42px);
+  background: var(--paper);
+}
+
+.masters-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.section-head {
+  max-width: 680px;
+  margin-bottom: 20px;
+}
+
+.section-head h2 {
+  margin: 14px 0 0;
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-size: clamp(30px, 3.2vw, 38px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.masters-lead {
+  max-width: 620px;
+  margin: 0 0 clamp(24px, 3vw, 34px);
+  color: var(--muted);
+  font-size: clamp(16px, 1.35vw, 19px);
+  line-height: 1.65;
+}
+
+.masters-controls {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: 100px;
+  transform: translateX(-30px);
+}
+
+.masters-controls button {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 244, 234, 0.46);
+  border-radius: 999px;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  transition:
+    transform 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    background-color 0.35s var(--ease);
+}
+
+.masters-controls button:hover {
+  border-color: rgba(42, 31, 27, 0.32);
+  background-color: rgba(247, 236, 228, 0.22);
+  transform: translateY(-2px);
+}
+
+.masters-controls button:disabled {
+  cursor: default;
+  opacity: 0.36;
+  transform: none;
+}
+
+.masters-controls button:disabled:hover {
+  border-color: rgba(255, 244, 234, 0.46);
+  background: transparent;
+}
+
+.masters-track {
+  display: flex;
+  gap: clamp(16px, 1.6vw, 22px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.masters-track::-webkit-scrollbar {
+  display: none;
+}
+
+.master-card {
+  position: relative;
+  flex: 0 0 clamp(360px, 31vw, 430px);
+  overflow: hidden;
+  scroll-snap-align: start;
+  min-height: clamp(250px, 22vw, 300px);
+  border-radius: 20px;
+  background: var(--paper-soft);
+}
+
+.master-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #dcc0ac;
+}
+
+.master-photo::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(42, 31, 27, 0.12);
+}
+
+.master-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s var(--ease);
+}
+
+.master-card:hover .master-photo img {
+  transform: scale(1.035);
+}
+
+.master-info {
+  position: relative;
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(18px, 2vw, 24px);
+}
+
+.master-info::before {
+  content: none;
+}
+
+.master-info > * {
+  position: relative;
+}
+
+.master-info h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-size: clamp(30px, 2.8vw, 42px);
+  font-weight: 600;
+  line-height: 0.95;
+  color: #fff6ee;
+  text-shadow: 0 2px 18px rgba(42, 31, 27, 0.28);
+}
+
+.master-role {
+  margin: 8px 0 0;
+  color: rgba(255, 246, 238, 0.84);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: lowercase;
+}
+
+.master-summary {
+  margin: 8px 0 0;
+  color: rgba(255, 246, 238, 0.78);
+  font-size: 13px;
+  line-height: 1.45;
+  text-shadow: 0 2px 16px rgba(42, 31, 27, 0.24);
+}
+
+.master-summary span {
+  display: block;
+  margin-top: 3px;
+}
+
+@media (max-width: 680px) {
+  .masters-top {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .masters-controls {
+    width: 100%;
+    justify-content: space-between;
+    align-self: stretch;
+    margin-top: 0;
+    margin-bottom: 18px;
+    transform: none;
+  }
+
+  .masters-track {
+    margin-top: 0;
+  }
+
+  .master-card {
+    flex-basis: min(86vw, 360px);
+    min-height: 250px;
+  }
+}

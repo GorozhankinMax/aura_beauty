@@ -1,0 +1,130 @@
+/* Текстура секций и карточек. Меняй opacity, если фактура слишком сильная или слабая. */
+.hero-panel::before,
+.about-panel::before,
+.masters-panel::before,
+.gallery-panel::before,
+.process-panel::before,
+.reviews-panel::before,
+.contact-panel::before,
+.portfolio-panel::before,
+.stats-strip::before,
+.work-card::before,
+.master-card::before,
+.gallery-card::before,
+.process-step::before,
+.review-card::before,
+.booking-form::before,
+.footer-panel::before,
+.about-copy li span::before,
+.price-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background-image: var(--paper-texture);
+  background-repeat: repeat;
+  background-position: 0 0;
+  mix-blend-mode: multiply;
+}
+
+/* Масштаб текстуры больших секций. */
+.hero-panel::before,
+.about-panel::before,
+.masters-panel::before,
+.gallery-panel::before,
+.process-panel::before,
+.reviews-panel::before,
+.contact-panel::before,
+.portfolio-panel::before {
+  background-size: var(--section-texture-size);
+}
+
+/* Масштаб текстуры внутренних карточек и формы. */
+.stats-strip::before,
+.work-card::before,
+.master-card::before,
+.gallery-card::before,
+.process-step::before,
+.review-card::before,
+.booking-form::before,
+.footer-panel::before,
+.about-copy li span::before,
+.price-card::before {
+  background-size: var(--card-texture-size);
+}
+
+/* Текстура больших светлых секций. Подними opacity до 0.18, если нужна более заметная бумага. */
+.hero-panel::before,
+.about-panel::before,
+.masters-panel::before,
+.gallery-panel::before,
+.reviews-panel::before,
+.contact-panel::before {
+  opacity: 0.2;
+}
+
+/* Текстура терракотовых секций. */
+.portfolio-panel::before,
+.process-panel::before {
+  opacity: 0.1;
+}
+
+/* Текстура внутренних карточек и footer. */
+.stats-strip::before,
+.work-card::before,
+.master-card::before,
+.gallery-card::before,
+.process-step::before,
+.review-card::before,
+.booking-form::before,
+.footer-panel::before,
+.about-copy li span::before,
+.price-card::before {
+  opacity: 0.3;
+}
+
+/* Едва заметное затемнение справа. Это мягкая светотень, не декоративный яркий фон. */
+.hero-panel::after,
+.about-panel::after,
+.masters-panel::after,
+.gallery-panel::after,
+.process-panel::after,
+.reviews-panel::after,
+.contact-panel::after,
+.portfolio-panel::after,
+.footer-panel::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(242, 228, 216, 0) 0%,
+    rgba(169, 105, 76, 0.1) 64%,
+    rgba(120, 72, 48, 0.1) 100%
+  );
+}
+
+/* Контент секций должен лежать поверх текстуры. */
+.hero-panel > *,
+.about-panel > *,
+.masters-panel > *,
+.gallery-panel > *,
+.process-panel > *,
+.reviews-panel > *,
+.contact-panel > *,
+.portfolio-panel > *,
+.stats-strip > *,
+.work-card > *,
+.master-card > *,
+.gallery-card > *,
+.process-step > *,
+.review-card > *,
+.booking-form > *,
+.footer-panel > *,
+.price-card > * {
+  position: relative;
+  z-index: 1;
+}

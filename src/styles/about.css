@@ -1,0 +1,111 @@
+/* Секция "О студии". */
+.about-panel {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(420px, 1.2fr);
+  gap: clamp(26px, 4vw, 44px);
+  align-items: center;
+  margin-top: 0;
+  padding: clamp(26px, 4vw, 34px) clamp(24px, 4.6vw, 54px);
+  background: #f3e4d6;
+}
+
+.about-copy h2 {
+  max-width: min(100%, 470px);
+  font-size: clamp(30px, 3.2vw, 38px);
+  line-height: 1.05;
+}
+
+.about-copy ul {
+  display: grid;
+  gap: 20px;
+  padding: 0;
+  margin: 30px 0 0;
+  list-style: none;
+}
+
+.about-copy li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 18px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.about-copy li span {
+  position: relative;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  color: var(--terracotta);
+  background: var(--paper-soft);
+}
+
+/* Визуальный блок справа. */
+.video-card {
+  position: relative;
+  min-height: clamp(300px, 30vw, 430px);
+  overflow: hidden;
+  border-radius: 150px 18px 18px 18px;
+  background: #b5a18b;
+}
+
+.video-card img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 30vw, 430px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.video-card::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(42, 31, 27, 0.14);
+}
+
+.visit-preview {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  color: #fff8f1;
+}
+
+.play {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #8f4b32;
+  background: #fff8f1;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    transform 0.25s var(--ease),
+    background-color 0.25s var(--ease);
+}
+
+.play:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.visit-preview p {
+  margin: 0;
+  color: #fff8f1;
+  font-size: 13px;
+  text-align: center;
+}

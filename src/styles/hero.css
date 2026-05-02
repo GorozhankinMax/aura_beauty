@@ -172,21 +172,24 @@
 }
 
 .mobile-menu {
+  --mobile-menu-top-offset: calc(clamp(70px, 9svh, 104px) + 8px);
+  --mobile-menu-bottom-clearance: max(14px, env(safe-area-inset-bottom));
+  --mobile-menu-y-padding: clamp(24px, 5svh, 52px);
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
   left: 0;
   z-index: 2;
-  display: grid;
-  height: auto;
-  max-height: none;
-  min-height: 80svh;
-  align-content: stretch;
-  justify-items: center;
-  gap: clamp(22px, 4vw, 34px);
-  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+  max-height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+  min-height: 0;
+  align-items: center;
+  gap: clamp(16px, 2.5svh, 28px);
+  overflow: hidden;
   overscroll-behavior: contain;
-  padding: clamp(70px, 13vw, 116px) 24px calc(clamp(34px, 8vw, 72px) + env(safe-area-inset-bottom));
+  padding: var(--mobile-menu-y-padding) 24px;
   border-radius: clamp(20px, 5vw, var(--radius));
   background-color: rgba(235, 214, 197, 0.97);
   box-shadow: 0 18px 42px rgba(82, 42, 25, 0.08);
@@ -285,7 +288,7 @@
   display: grid;
   justify-items: center;
   gap: 8px;
-  align-self: end;
+  align-self: center;
   margin-top: auto;
   color: var(--muted);
   font-family: "Manrope", "Inter", Arial, sans-serif;

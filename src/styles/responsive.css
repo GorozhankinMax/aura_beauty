@@ -421,18 +421,18 @@
     width: 100%;
     max-width: 100%;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
     margin-top: clamp(18px, 4.2vw, 26px);
     font-size: clamp(48px, 14vw, 52px);
     line-height: 0.95;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-action-group {
     position: relative;
     z-index: 3;
     display: grid;
-    justify-items: center;
+    justify-items: start;
     gap: var(--hero-mobile-text-button-gap);
     margin-top: auto;
     padding-bottom: var(--hero-mobile-buttons-stats-gap);
@@ -446,19 +446,19 @@
     width: 100%;
     max-width: 92%;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 0;
     margin-top: 0;
     font-size: clamp(12px, 3.35vw, 14px);
     line-height: 1.5;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-actions {
     position: static;
     width: 100%;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
     margin-top: 0;
   }
@@ -470,7 +470,7 @@
 
   .hero-actions .inline-link {
     margin-left: 0;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-image {
@@ -747,11 +747,14 @@
   }
 
   .mobile-menu {
-    min-height: 80svh;
-    height: auto;
-    max-height: none;
-    gap: clamp(9px, 2svh, 14px);
-    padding: clamp(22px, 5svh, 34px) 18px calc(clamp(16px, 3.5svh, 22px) + env(safe-area-inset-bottom));
+    --mobile-menu-top-offset: 72px;
+    --mobile-menu-bottom-clearance: clamp(18px, 4svh, 30px);
+    --mobile-menu-y-padding: clamp(16px, 3svh, 22px);
+    height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+    max-height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+    min-height: 0;
+    gap: clamp(6px, 1.4svh, 10px);
+    padding: var(--mobile-menu-y-padding) 18px;
   }
 
   .mobile-menu a {
@@ -770,6 +773,7 @@
     gap: 4px;
     margin-top: auto;
     font-size: clamp(8px, 2.7vw, 10px);
+    line-height: 1.28;
   }
 
   .mobile-menu .mobile-menu-info > a {
@@ -872,9 +876,11 @@
 /* Узкие, но высокие iPhone вроде 12 Pro: меню делаем просторнее, как на 14 Pro Max. */
 @media (min-width: 390px) and (max-width: 420px) and (min-height: 800px) {
   .mobile-menu {
-    gap: clamp(13px, 2.4svh, 18px);
-    padding-top: clamp(34px, 5.6svh, 48px);
-    padding-bottom: calc(clamp(22px, 4svh, 34px) + env(safe-area-inset-bottom));
+    --mobile-menu-bottom-clearance: clamp(22px, 5svh, 38px);
+    --mobile-menu-y-padding: clamp(18px, 3.2svh, 24px);
+    gap: clamp(7px, 1.45svh, 12px);
+    padding-top: var(--mobile-menu-y-padding);
+    padding-bottom: var(--mobile-menu-y-padding);
   }
 
   .mobile-menu a {
@@ -940,12 +946,14 @@
   }
 
   .mobile-menu {
-    min-height: 80svh;
-    height: auto;
-    max-height: none;
-    gap: clamp(8px, 1.8svh, 12px);
-    padding-top: clamp(16px, 4svh, 24px);
-    padding-bottom: calc(clamp(12px, 2.8svh, 18px) + env(safe-area-inset-bottom));
+    --mobile-menu-bottom-clearance: clamp(14px, 3.5svh, 24px);
+    --mobile-menu-y-padding: clamp(12px, 2.8svh, 18px);
+    gap: clamp(5px, 1.15svh, 8px);
+    height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+    max-height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+    min-height: 0;
+    padding-top: var(--mobile-menu-y-padding);
+    padding-bottom: var(--mobile-menu-y-padding);
   }
 
   .mobile-menu a {

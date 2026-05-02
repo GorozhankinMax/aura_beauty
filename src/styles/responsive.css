@@ -368,14 +368,14 @@
 
   .hero-panel {
     --hero-mobile-pad-x: 22px;
-    --hero-mobile-flow-gap: clamp(20px, 4.6vw, 28px);
-    --hero-mobile-image-width: clamp(320px, 104vw, 440px);
+    --hero-mobile-text-button-gap: clamp(40px, 10vw, 48px);
+    --hero-mobile-buttons-stats-gap: clamp(40px, 10vw, 48px);
+    --hero-mobile-image-width: clamp(360px, 124vw, 540px);
     --hero-mobile-image-max: none;
     --hero-mobile-image-right: calc(var(--hero-mobile-pad-x) * -1);
     --hero-mobile-stat-height: clamp(82px, 12svh, 108px);
     --hero-mobile-stats-gap: 10px;
-    --hero-mobile-image-gap: clamp(1px, 0.7vw, 5px);
-    --hero-mobile-image-bottom: calc(24px + (var(--hero-mobile-stat-height) * 2) + var(--hero-mobile-stats-gap) + var(--hero-mobile-image-gap));
+    --hero-mobile-image-stats-gap: clamp(140px, 10vw, 160px);
     --hero-mobile-image-opacity: 0.24;
     min-height: calc(100svh - 20px);
     height: auto;
@@ -425,9 +425,9 @@
     z-index: 3;
     display: grid;
     justify-items: center;
-    gap: var(--hero-mobile-flow-gap);
+    gap: var(--hero-mobile-text-button-gap);
     margin-top: auto;
-    padding-bottom: var(--hero-mobile-flow-gap);
+    padding-bottom: var(--hero-mobile-buttons-stats-gap);
   }
 
   .hero-action-group .hero-actions {
@@ -471,14 +471,15 @@
       --hero-mobile-image-width   — размер изображения;
       --hero-mobile-image-max     — максимальный размер;
       --hero-mobile-image-right   — сдвиг от правого края секции;
-      --hero-mobile-image-bottom  — расстояние от низа секции с учётом stats;
+      --hero-mobile-image-stats-gap — расстояние от нижнего края изображения до stats;
       --hero-mobile-image-opacity — прозрачность.
-      Изображение absolute и находится за текстом, кнопками и статистикой.
+      Изображение absolute внутри hero-layout: 0px ставит его вплотную к stats,
+      положительное значение поднимает выше, отрицательное опускает ниже.
     */
     position: absolute;
     top: auto;
     right: var(--hero-mobile-image-right);
-    bottom: var(--hero-mobile-image-bottom);
+    bottom: var(--hero-mobile-image-stats-gap);
     z-index: 1;
     width: var(--hero-mobile-image-width);
     max-width: var(--hero-mobile-image-max);
@@ -725,12 +726,13 @@
 
   .hero-panel {
     --hero-mobile-pad-x: 16px;
-    --hero-mobile-flow-gap: clamp(14px, 3.8vw, 22px);
+    --hero-mobile-text-button-gap: clamp(30px, 3.8vw, 34px);
+    --hero-mobile-buttons-stats-gap: clamp(30px, 3.8vw, 34px);
     --hero-mobile-image-width: clamp(310px, 101vw, 420px);
     --hero-mobile-image-max: none;
     --hero-mobile-stat-height: 76px;
     --hero-mobile-stats-gap: 8px;
-    --hero-mobile-image-gap: clamp(0px, 0.6vw, 3px);
+    --hero-mobile-image-stats-gap: clamp(1px, 0.6vw, 3px);
     min-height: calc(100svh - 0px);
     height: auto;
   }
@@ -904,7 +906,7 @@
   .hero-panel {
     --hero-mobile-image-width: clamp(300px, 96vw, 390px);
     --hero-mobile-stat-height: 68px;
-    --hero-mobile-image-gap: 2px;
+    --hero-mobile-image-stats-gap: 2px;
   }
 
   .hero-copy {

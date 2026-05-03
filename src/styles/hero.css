@@ -172,9 +172,9 @@
 }
 
 .mobile-menu {
-  --mobile-menu-top-offset: calc(clamp(70px, 9svh, 104px) + 8px);
+  --mobile-menu-top-offset: calc(clamp(70px, calc(var(--app-stable-vh) * 9), 104px) + 8px);
   --mobile-menu-bottom-clearance: max(14px, env(safe-area-inset-bottom));
-  --mobile-menu-y-padding: clamp(24px, 5svh, 52px);
+  --mobile-menu-y-padding: clamp(24px, calc(var(--app-stable-vh) * 5), 52px);
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
@@ -182,11 +182,11 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
-  max-height: calc(100svh - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+  height: calc(var(--app-stable-vh) * 100 - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
+  max-height: calc(var(--app-stable-vh) * 100 - var(--mobile-menu-top-offset) - var(--mobile-menu-bottom-clearance));
   min-height: 0;
   align-items: center;
-  gap: clamp(16px, 2.5svh, 28px);
+  gap: clamp(16px, calc(var(--app-stable-vh) * 2.5), 28px);
   overflow: hidden;
   overscroll-behavior: contain;
   padding: var(--mobile-menu-y-padding) 24px;

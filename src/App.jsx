@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ListChecks, Sparkles, Star, UserRoundCheck } from "lucide-react";
 
 const stats = [
@@ -253,7 +253,7 @@ const footerContacts = [
 function App() {
   const [isSent, setIsSent] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(null);
   const [isServicesModalOpen, setIsServicesModalOpen] = useState(false);
   const [isServiceSelectOpen, setIsServiceSelectOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
@@ -266,6 +266,47 @@ function App() {
   const worksTrackRef = useRef(null);
   const serviceSelectRef = useRef(null);
 
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    let stableWidth = window.innerWidth;
+    let stableHeight = window.innerHeight;
+
+    const applyStableViewport = () => {
+      root.style.setProperty("--app-stable-vh", `${stableHeight * 0.01}px`);
+      root.classList.toggle("is-tall-mobile-viewport", stableWidth >= 390 && stableWidth <= 420 && stableHeight >= 800);
+      root.classList.toggle("is-low-mobile-viewport", stableWidth <= 420 && stableHeight <= 720);
+    };
+
+    const refreshStableViewport = () => {
+      const nextWidth = window.innerWidth;
+
+      if (Math.abs(nextWidth - stableWidth) < 24) return;
+
+      stableWidth = nextWidth;
+      stableHeight = window.innerHeight;
+      applyStableViewport();
+    };
+
+    const refreshAfterOrientation = () => {
+      window.setTimeout(() => {
+        stableWidth = window.innerWidth;
+        stableHeight = window.innerHeight;
+        applyStableViewport();
+      }, 250);
+    };
+
+    applyStableViewport();
+    window.addEventListener("resize", refreshStableViewport);
+    window.visualViewport?.addEventListener("resize", refreshStableViewport);
+    window.addEventListener("orientationchange", refreshAfterOrientation);
+
+    return () => {
+      window.removeEventListener("resize", refreshStableViewport);
+      window.visualViewport?.removeEventListener("resize", refreshStableViewport);
+      window.removeEventListener("orientationchange", refreshAfterOrientation);
+    };
+  }, []);
+
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
     const observer = new IntersectionObserver(
@@ -273,8 +314,7 @@ function App() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -303,11 +343,11 @@ function App() {
   useEffect(() => {
     const closeMobileMenu = (event) => {
       if (event.type === "resize" && window.innerWidth > 1024) {
-        setIsMobileMenuOpen(false);
+        setOpenMobileMenu(null);
       }
 
       if (event.type === "keydown" && event.key === "Escape") {
-        setIsMobileMenuOpen(false);
+        setOpenMobileMenu(null);
       }
     };
 
@@ -473,17 +513,17 @@ function App() {
     <>
       <Header
         className={`topbar topbar--fixed${isHeaderVisible ? " is-visible" : ""}`}
-        isMenuOpen={isMobileMenuOpen}
-        onMenuToggle={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
-        onMenuClose={() => setIsMobileMenuOpen(false)}
+        isMenuOpen={openMobileMenu === "fixed"}
+        onMenuToggle={() => setOpenMobileMenu((currentMenu) => (currentMenu === "fixed" ? null : "fixed"))}
+        onMenuClose={() => setOpenMobileMenu(null)}
       />
       <main className="page">
         <section className="hero-panel" id="top">
         <Header
           className="topbar topbar--hero"
-          isMenuOpen={isMobileMenuOpen}
-          onMenuToggle={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
-          onMenuClose={() => setIsMobileMenuOpen(false)}
+          isMenuOpen={openMobileMenu === "hero"}
+          onMenuToggle={() => setOpenMobileMenu((currentMenu) => (currentMenu === "hero" ? null : "hero"))}
+          onMenuClose={() => setOpenMobileMenu(null)}
         />
         <div className="hero-layout">
           <div className="hero-copy">

@@ -5,6 +5,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--anchor-offset);
   background-color: var(--bg);
 }
 
@@ -67,6 +68,7 @@ button {
   border: 0;
   border-radius: var(--radius);
   box-shadow: var(--section-shadow);
+  scroll-margin-top: var(--anchor-offset);
 }
 
 .eyebrow,

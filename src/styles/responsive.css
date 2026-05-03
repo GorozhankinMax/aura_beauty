@@ -455,8 +455,8 @@
 
   .hero-actions {
     position: static;
-    width: 100%;
-    align-items: flex-start;
+    width: min(100%, 230px);
+    align-items: center;
     flex-direction: column;
     justify-content: flex-start;
     gap: 12px;
@@ -464,13 +464,14 @@
   }
 
   .hero-actions .primary-button {
-    width: min(100%, 230px);
+    width: 100%;
     justify-content: center;
   }
 
   .hero-actions .inline-link {
     margin-left: 0;
-    width: min(100%, 230px);
+    width: fit-content;
+    align-self: center;
     text-align: center;
   }
 
@@ -804,16 +805,16 @@
   }
 
   .hero-actions {
-    width: 100%;
+    width: min(100%, 184px);
     gap: 12px;
   }
 
   .hero-actions .primary-button {
-    width: min(100%, 184px);
+    width: 100%;
   }
 
   .hero-actions .inline-link {
-    width: min(100%, 184px);
+    width: fit-content;
     margin-left: 0;
     font-size: 12px;
     text-align: center;
@@ -937,6 +938,10 @@
 
   html.is-low-mobile-viewport .hero-actions .primary-button {
     min-height: 46px;
+    width: 100%;
+  }
+
+  html.is-low-mobile-viewport .hero-actions {
     width: min(100%, 172px);
   }
 

@@ -56,6 +56,8 @@
 
 .inline-link {
   position: relative;
+  display: inline-block;
+  width: fit-content;
   color: var(--text);
   font-size: 15px;
   font-weight: 500;

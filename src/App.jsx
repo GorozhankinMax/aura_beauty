@@ -118,28 +118,28 @@ const aboutItems = [
 
 const masters = [
   {
-    name: "Анна",
+    name: "анна",
     role: "косметолог-эстетист",
     specialty: "уход за лицом, пилинги, массаж",
     experience: "5 лет",
     image: "/Anna.png",
   },
   {
-    name: "Мария",
+    name: "мария",
     role: "мастер маникюра",
     specialty: "нюдовые покрытия, укрепление, SPA-уход",
     experience: "4 года",
     image: "/Maria.png",
   },
   {
-    name: "Елена",
+    name: "елена",
     role: "бровист / lash-мастер",
     specialty: "ламинирование, коррекция, естественный образ",
     experience: "3 года",
     image: "/Elena.png",
   },
   {
-    name: "София",
+    name: "софия",
     role: "визажист-стилист",
     specialty: "макияж, укладки, образы для съёмок",
     experience: "6 лет",
@@ -149,31 +149,31 @@ const masters = [
 
 const galleryWorks = [
   {
-    title: "Нюдовый маникюр",
+    title: "нюдовый маникюр",
     text: "Аккуратная форма и спокойный оттенок",
     tag: "NUDE FINISH",
     image: "/work-manicure.png",
   },
   {
-    title: "Естественные брови",
+    title: "естественные брови",
     text: "Мягкая линия без лишней графики",
     tag: "NATURAL SHAPE",
     image: "/work-brows.png",
   },
   {
-    title: "Сияние кожи",
+    title: "сияние кожи",
     text: "Свежесть, мягкость и ровный тон",
     tag: "SKIN GLOW",
     image: "/work-skin.png",
   },
   {
-    title: "Образ / макияж",
+    title: "образ / макияж",
     text: "Деликатные акценты под настроение",
     tag: "SOFT MAKEUP",
     image: "/work-makeup.png",
   },
   {
-    title: "Гладкая укладка",
+    title: "гладкая укладка",
     text: "Ровная форма и естественный блеск волос",
     tag: "SMOOTH HAIR",
     image: "/work-smooth-hair.png",
@@ -311,6 +311,7 @@ function App() {
     const elements = Array.from(document.querySelectorAll("[data-reveal]"));
     const hideTimers = new Map();
     let frameId = 0;
+    let lastScrollY = window.scrollY;
 
     const cancelHide = (element) => {
       const pendingTimer = hideTimers.get(element);
@@ -327,7 +328,7 @@ function App() {
       const hideTimer = window.setTimeout(() => {
         element.classList.remove("is-visible");
         hideTimers.delete(element);
-      }, 180);
+      }, 220);
 
       hideTimers.set(element, hideTimer);
     };
@@ -335,20 +336,25 @@ function App() {
     const updateReveal = () => {
       frameId = 0;
 
+      const currentScrollY = window.scrollY;
+      const isScrollingUp = currentScrollY < lastScrollY;
       const viewportHeight = window.innerHeight;
-      const showTopLimit = viewportHeight * 0.74;
-      const showBottomLimit = viewportHeight * 0.18;
-      const topReplayLimit = viewportHeight * -0.22;
-      const hideAboveLimit = viewportHeight * -0.32;
+      const showTopLimit = viewportHeight * 0.78;
+      const showBottomLimit = viewportHeight * 0.16;
+      const showFromTopLimit = viewportHeight * 0.28;
+      const hideAboveLimit = viewportHeight * -0.24;
       const hideBelowLimit = viewportHeight * 1.08;
 
       elements.forEach((element) => {
         const rect = element.getBoundingClientRect();
-        const shouldShow = rect.top <= showTopLimit && rect.bottom >= showBottomLimit && rect.top >= topReplayLimit;
+        const shouldShow = isScrollingUp
+          ? rect.bottom >= showFromTopLimit && rect.top <= showTopLimit
+          : rect.top <= showTopLimit && rect.bottom >= showBottomLimit;
         const shouldHide = rect.bottom < hideAboveLimit || rect.top > hideBelowLimit;
 
         if (shouldShow) {
           cancelHide(element);
+          element.dataset.revealDirection = isScrollingUp ? "up" : "down";
           element.classList.add("is-visible");
           return;
         }
@@ -359,6 +365,8 @@ function App() {
           cancelHide(element);
         }
       });
+
+      lastScrollY = currentScrollY;
     };
 
     const queueRevealUpdate = () => {

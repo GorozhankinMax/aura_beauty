@@ -2016,3 +2016,16 @@
 — Верхний запас rootMargin оставлен положительным, чтобы элементы не скрывались слишком резко при обратной прокрутке.
 Зачем:
 — После возврата многоразовой анимации элементы начинали появляться слишком рано и успевали закончить анимацию до того, как пользователь реально видел блок.
+
+### Изменение 180
+Дата: 2026-05-03 12:48:58 +03:00
+Файлы: src/App.jsx, src/styles/global.css, src/styles/variables.css, src/styles/base.css, src/styles/contact.css, src/styles/faq.css, src/styles/footer.css, src/styles/gallery.css, src/styles/hero.css, src/styles/masters.css, src/styles/modal.css, src/styles/process.css, src/styles/reviews.css, CHANGELOG_SITE.md
+Что сделано:
+— Reveal-анимация переведена с IntersectionObserver rootMargin на явный расчёт положения через getBoundingClientRect.
+— Появление теперь запускается только когда верх блока находится близко к видимой зоне, поэтому при обратной прокрутке сверху анимация видна.
+— Скрытие осталось с задержкой и большим запасом за пределами viewport, чтобы не возвращалось мерцание на границе.
+— Подключён веб-шрифт Literature Decor через CSS import.
+— Добавлена переменная --heading-font с Literature Decor и fallback-цепочкой.
+— Все декоративные заголовочные font-family переведены на var(--heading-font).
+Зачем:
+— Анимация при появлении сверху не была заметна из-за слишком раннего срабатывания, а пользователь попросил поставить для заголовков шрифт Literature Decor.

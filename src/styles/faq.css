@@ -19,7 +19,7 @@
 .faq-copy h2 {
   margin: 14px 0 0;
   color: #fff4ea;
-  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-family: var(--heading-font);
   font-size: clamp(32px, 3.6vw, 46px);
   font-weight: 500;
   line-height: 1;

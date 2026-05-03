@@ -133,7 +133,7 @@
 
 .gallery-card h3 {
   margin: 12px 0 0;
-  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-family: var(--heading-font);
   font-size: clamp(25px, 2.2vw, 32px);
   font-weight: 600;
   line-height: 1;

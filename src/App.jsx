@@ -308,37 +308,72 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const elements = document.querySelectorAll("[data-reveal]");
+    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
     const hideTimers = new Map();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const pendingTimer = hideTimers.get(entry.target);
+    let frameId = 0;
 
-          if (pendingTimer) {
-            window.clearTimeout(pendingTimer);
-            hideTimers.delete(entry.target);
-          }
+    const cancelHide = (element) => {
+      const pendingTimer = hideTimers.get(element);
 
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            return;
-          }
+      if (!pendingTimer) return;
 
-          const hideTimer = window.setTimeout(() => {
-            entry.target.classList.remove("is-visible");
-            hideTimers.delete(entry.target);
-          }, 180);
+      window.clearTimeout(pendingTimer);
+      hideTimers.delete(element);
+    };
 
-          hideTimers.set(entry.target, hideTimer);
-        });
-      },
-      { threshold: 0.06, rootMargin: "90px 0px -12% 0px" },
-    );
+    const scheduleHide = (element) => {
+      if (hideTimers.has(element)) return;
 
-    elements.forEach((element) => observer.observe(element));
+      const hideTimer = window.setTimeout(() => {
+        element.classList.remove("is-visible");
+        hideTimers.delete(element);
+      }, 180);
+
+      hideTimers.set(element, hideTimer);
+    };
+
+    const updateReveal = () => {
+      frameId = 0;
+
+      const viewportHeight = window.innerHeight;
+      const showTopLimit = viewportHeight * 0.74;
+      const showBottomLimit = viewportHeight * 0.18;
+      const topReplayLimit = viewportHeight * -0.22;
+      const hideAboveLimit = viewportHeight * -0.32;
+      const hideBelowLimit = viewportHeight * 1.08;
+
+      elements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const shouldShow = rect.top <= showTopLimit && rect.bottom >= showBottomLimit && rect.top >= topReplayLimit;
+        const shouldHide = rect.bottom < hideAboveLimit || rect.top > hideBelowLimit;
+
+        if (shouldShow) {
+          cancelHide(element);
+          element.classList.add("is-visible");
+          return;
+        }
+
+        if (shouldHide) {
+          scheduleHide(element);
+        } else {
+          cancelHide(element);
+        }
+      });
+    };
+
+    const queueRevealUpdate = () => {
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(updateReveal);
+    };
+
+    updateReveal();
+    window.addEventListener("scroll", queueRevealUpdate, { passive: true });
+    window.addEventListener("resize", queueRevealUpdate);
+
     return () => {
-      observer.disconnect();
+      window.removeEventListener("scroll", queueRevealUpdate);
+      window.removeEventListener("resize", queueRevealUpdate);
+      if (frameId) window.cancelAnimationFrame(frameId);
       hideTimers.forEach((timer) => window.clearTimeout(timer));
     };
   }, []);

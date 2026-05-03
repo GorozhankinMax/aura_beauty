@@ -19,7 +19,7 @@
 
 .section-head h2 {
   margin: 14px 0 0;
-  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-family: var(--heading-font);
   font-size: clamp(30px, 3.2vw, 38px);
   font-weight: 500;
   line-height: 1;
@@ -153,7 +153,7 @@
 
 .master-info h3 {
   margin: 0;
-  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-family: var(--heading-font);
   font-size: clamp(30px, 2.8vw, 42px);
   font-weight: 600;
   line-height: 0.95;

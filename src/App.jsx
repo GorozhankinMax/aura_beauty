@@ -333,7 +333,7 @@ function App() {
           hideTimers.set(entry.target, hideTimer);
         });
       },
-      { threshold: 0.01, rootMargin: "140px 0px 180px 0px" },
+      { threshold: 0.06, rootMargin: "90px 0px -12% 0px" },
     );
 
     elements.forEach((element) => observer.observe(element));

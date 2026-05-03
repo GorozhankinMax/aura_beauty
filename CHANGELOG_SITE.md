@@ -2029,3 +2029,15 @@
 — Все декоративные заголовочные font-family переведены на var(--heading-font).
 Зачем:
 — Анимация при появлении сверху не была заметна из-за слишком раннего срабатывания, а пользователь попросил поставить для заголовков шрифт Literature Decor.
+
+### Изменение 181
+Дата: 2026-05-03 12:57:34 +03:00
+Файлы: src/styles/global.css, src/styles/variables.css, public/fonts/Berold-Regular.woff, CHANGELOG_SITE.md
+Что сделано:
+— Шрифт заголовков заменён с Literature Decor на Berold.
+— Удалён import Literature Decor.
+— Из Google Fonts import убран Cormorant Garamond, так как заголовки теперь используют Berold.
+— Berold подключён локально через @font-face и файл public/fonts/Berold-Regular.woff, потому что внешний webfont с OnlineWebFonts отдавал ошибки декодирования в Chromium.
+— Переменная --heading-font теперь содержит Berold Regular с fallback на Georgia и serif.
+Зачем:
+— Пользователь попросил заменить шрифт заголовков на Berold и удалить прошлый шрифт.

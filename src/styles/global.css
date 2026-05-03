@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
-@import url("https://myfonts.ru/myfonts?fonts=literature-decor");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
 
 @import "./variables.css";
 @import "./base.css";
@@ -18,3 +17,11 @@
 @import "./footer.css";
 @import "./animations.css";
 @import "./responsive.css";
+
+@font-face {
+  font-family: "Berold Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Berold Regular"), url("/fonts/Berold-Regular.woff") format("woff");
+  font-display: swap;
+}

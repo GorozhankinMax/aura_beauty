@@ -354,7 +354,17 @@ function App() {
 
         if (shouldShow) {
           cancelHide(element);
-          element.dataset.revealDirection = isScrollingUp ? "up" : "down";
+          const nextDirection = isScrollingUp ? "up" : "down";
+
+          if (!element.classList.contains("is-visible")) {
+            element.style.transition = "none";
+            element.dataset.revealDirection = nextDirection;
+            element.getBoundingClientRect();
+            element.style.transition = "";
+            element.getBoundingClientRect();
+          }
+
+          element.dataset.revealDirection = nextDirection;
           element.classList.add("is-visible");
           return;
         }
@@ -413,7 +423,7 @@ function App() {
       const rect = heroPanel.getBoundingClientRect();
       const viewportHeight = window.innerHeight || 1;
       const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + rect.height), 0), 1);
-      const shift = (progress - 0.5) * 28;
+      const shift = (progress - 0.5) * 72;
 
       heroPanel.style.setProperty("--hero-image-scroll", `${shift.toFixed(2)}px`);
     };
@@ -591,8 +601,12 @@ function App() {
     const track = mastersTrackRef.current;
     if (!track) return;
 
+    const firstCard = track.querySelector(".master-card");
+    const gap = Number.parseFloat(window.getComputedStyle(track).columnGap || "0");
+    const scrollAmount = firstCard ? firstCard.getBoundingClientRect().width + gap : Math.min(track.clientWidth * 0.85, 620);
+
     track.scrollBy({
-      left: direction * Math.min(track.clientWidth * 0.85, 620),
+      left: direction * scrollAmount,
       behavior: "smooth",
     });
   };

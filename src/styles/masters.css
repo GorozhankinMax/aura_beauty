@@ -61,7 +61,7 @@
 
 .masters-controls button span {
   display: block;
-  transform: translateY(-1px);
+  transform: translateY(-4px);
   line-height: 1;
 }
 
@@ -98,7 +98,7 @@
 
 .master-card {
   position: relative;
-  flex: 0 0 clamp(360px, 31vw, 430px);
+  flex: 0 0 calc((100% - (clamp(16px, 1.6vw, 22px) * 2)) / 3);
   overflow: hidden;
   scroll-snap-align: start;
   min-height: clamp(250px, 22vw, 300px);
@@ -203,7 +203,7 @@
   }
 
   .master-card {
-    flex-basis: min(86vw, 360px);
+    flex-basis: 100%;
     min-height: 250px;
   }
 }

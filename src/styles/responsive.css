@@ -79,6 +79,7 @@
   }
 
   .hero-panel {
+    --hero-panel-pad-x: 40px;
     min-height: auto;
     overflow: hidden;
     padding: 48px 40px 32px;
@@ -99,10 +100,14 @@
   }
 
   .hero-copy h1 {
-    max-width: 100%;
+    width: calc(100% + (var(--hero-panel-pad-x) * 2));
+    max-width: none;
     margin-top: 24px;
-    font-size: clamp(44px, 4.8vw, 64px);
-    line-height: 0.98;
+    margin-right: calc(var(--hero-panel-pad-x) * -1);
+    margin-left: calc(var(--hero-panel-pad-x) * -1);
+    font-size: clamp(64px, 8vw, 86px);
+    line-height: 0.88;
+    text-align: center;
   }
 
   .hero-copy p:not(.eyebrow) {
@@ -368,6 +373,7 @@
 
   .hero-panel {
     --hero-mobile-pad-x: 22px;
+    --hero-panel-pad-x: var(--hero-mobile-pad-x);
     --hero-mobile-text-button-gap: clamp(20px, 6vw, 30px);
     --hero-mobile-buttons-stats-gap: clamp(40px, 10vw, 48px);
     --hero-mobile-image-width: clamp(360px, 124vw, 540px);
@@ -381,7 +387,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
     padding: 28px var(--hero-mobile-pad-x) 24px;
     border-radius: 28px;
   }
@@ -408,7 +414,7 @@
   }
 
   .hero-copy {
-    position: static;
+    position: relative;
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -418,14 +424,17 @@
   }
 
   .hero-copy h1 {
-    width: 100%;
-    max-width: 100%;
-    margin-right: auto;
-    margin-left: 0;
+    position: absolute;
+    top: clamp(152px, calc(var(--app-stable-vh) * 24), 220px);
+    left: 0;
+    width: calc(100% + (var(--hero-panel-pad-x) * 2));
+    max-width: none;
+    margin-right: calc(var(--hero-panel-pad-x) * -1);
+    margin-left: calc(var(--hero-panel-pad-x) * -1);
     margin-top: clamp(18px, 4.2vw, 26px);
-    font-size: clamp(40px, 11vw, 46px);
-    line-height: 0.95;
-    text-align: left;
+    font-size: clamp(58px, 17vw, 82px);
+    line-height: 0.86;
+    text-align: center;
   }
 
   .hero-action-group {
@@ -490,7 +499,7 @@
     top: auto;
     right: var(--hero-mobile-image-right);
     bottom: var(--hero-mobile-image-stats-gap);
-    z-index: 1;
+    z-index: 2;
     width: var(--hero-mobile-image-width);
     max-width: var(--hero-mobile-image-max);
     margin: 0;
@@ -579,6 +588,7 @@
   }
 
   .hero-panel {
+    --hero-panel-pad-x: 40px;
     height: auto;
     min-height: auto;
     display: block;
@@ -601,10 +611,14 @@
   }
 
   .hero-copy h1 {
-    max-width: 440px;
+    width: calc(100% + (var(--hero-panel-pad-x) * 2));
+    max-width: none;
     margin-top: 24px;
-    font-size: clamp(42px, 5.8vw, 60px);
-    line-height: 0.98;
+    margin-right: calc(var(--hero-panel-pad-x) * -1);
+    margin-left: calc(var(--hero-panel-pad-x) * -1);
+    font-size: clamp(64px, 9vw, 82px);
+    line-height: 0.88;
+    text-align: center;
   }
 
   .hero-action-group {
@@ -646,7 +660,7 @@
     top: auto;
     right: -40px;
     bottom: 50px;
-    z-index: 1;
+    z-index: 2;
     width: min(68vw, 760px);
     max-width: none;
     opacity: 0.7;
@@ -736,6 +750,7 @@
 
   .hero-panel {
     --hero-mobile-pad-x: 16px;
+    --hero-panel-pad-x: var(--hero-mobile-pad-x);
     --hero-mobile-image-max: none;
     --hero-mobile-stat-height: 76px;
     --hero-mobile-stats-gap: 8px;
@@ -821,8 +836,9 @@
   }
 
   .hero-copy h1 {
+    top: clamp(140px, calc(var(--app-stable-vh) * 23), 196px);
     margin-top: clamp(14px, 3.8vw, 18px);
-    font-size: clamp(28px, 7.8vw, 34px);
+    font-size: clamp(54px, 16vw, 68px);
   }
 
   .hero-copy p:not(.eyebrow) {
@@ -927,8 +943,9 @@
   }
 
   html.is-low-mobile-viewport .hero-copy h1 {
-    max-width: 100%;
-    font-size: clamp(26px, 7.4vw, 32px);
+    max-width: none;
+    top: clamp(120px, calc(var(--app-stable-vh) * 21), 170px);
+    font-size: clamp(48px, 15vw, 62px);
   }
 
   html.is-low-mobile-viewport .hero-copy p:not(.eyebrow) {

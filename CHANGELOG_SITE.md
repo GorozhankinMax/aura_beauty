@@ -2041,3 +2041,15 @@
 — Переменная --heading-font теперь содержит Berold Regular с fallback на Georgia и serif.
 Зачем:
 — Пользователь попросил заменить шрифт заголовков на Berold и удалить прошлый шрифт.
+
+### Изменение 182
+Дата: 2026-05-03 13:15:48 +03:00
+Файлы: src/App.jsx, src/styles/global.css, src/styles/variables.css, src/styles/hero.css, src/styles/footer.css, src/styles/process.css, src/styles/responsive.css, CHANGELOG_SITE.md
+Что сделано:
+— Для логотипа Clay и footer-логотипа возвращён Cormorant Garamond через отдельную переменную --classic-font.
+— Цифры в stats и римские номера процесса переведены на Cormorant Garamond.
+— Названия секций, eyebrow-подписи и пункты меню приведены к строчному регистру, чтобы не конфликтовать с особенностями Berold.
+— Hero-заголовок уменьшен на desktop, tablet, mobile и низких mobile-экранах.
+— На mobile ссылка “Смотреть услуги” теперь получает ширину кнопки “Записаться” и центрируется относительно неё, не сдвигая саму кнопку.
+Зачем:
+— Пользователь попросил оставить цифры и логотип Clay на Cormorant Garamond, убрать заглавные буквы у названий разделов, уменьшить hero-заголовок и выровнять ссылку “Смотреть услуги” по центру кнопки записи.

@@ -580,9 +580,9 @@ function App() {
         />
         <div className="hero-layout">
           <div className="hero-copy">
-            <p className="eyebrow">СТУДИЯ КРАСОТЫ</p>
+            <p className="eyebrow">студия красоты</p>
             <h1>
-              Красота,
+              красота,
               <br />
               которая работает
               <br />
@@ -608,8 +608,8 @@ function App() {
       <section className="portfolio-panel" id="services" data-reveal>
         <div className="panel-head panel-head--light">
           <div>
-            <p className="eyebrow">УСЛУГИ</p>
-            <h2>Направления ухода</h2>
+            <p className="eyebrow">услуги</p>
+            <h2>направления ухода</h2>
           </div>
         </div>
         <div className="work-row">
@@ -635,8 +635,8 @@ function App() {
 
       <section className="about-panel" id="about" data-reveal>
         <div className="about-copy">
-          <p className="eyebrow">О СТУДИИ</p>
-          <h2>Уход, который начинается с внимания</h2>
+          <p className="eyebrow">о студии</p>
+          <h2>уход, который начинается с внимания</h2>
           <ul>
             {aboutItems.map((item, index) => (
               <li key={item} data-reveal style={{ "--delay": `${index * 80}ms` }}>
@@ -660,7 +660,7 @@ function App() {
       <section className="masters-panel" id="masters" data-reveal>
         <div className="masters-top">
           <div>
-            <SectionHead eyebrow="МАСТЕРА" title="Мастера, которым доверяют" />
+            <SectionHead eyebrow="мастера" title="мастера, которым доверяют" />
             <p className="masters-lead">
               Каждый специалист работает внимательно, аккуратно и с пониманием вашего запроса.
             </p>
@@ -696,7 +696,7 @@ function App() {
       <section className="gallery-panel" id="works" data-reveal>
         <div className="gallery-top">
           <div>
-            <SectionHead eyebrow="РАБОТЫ" title="Эстетика в деталях" />
+            <SectionHead eyebrow="работы" title="эстетика в деталях" />
             <p className="gallery-lead">
               Результаты без лишней графики и перегруза — только аккуратные детали, которые подчёркивают естественность.
             </p>
@@ -729,7 +729,7 @@ function App() {
       </section>
 
       <section className="process-panel" id="process" data-reveal>
-        <SectionHead eyebrow="ПРОЦЕСС" title="Как проходит запись" />
+        <SectionHead eyebrow="процесс" title="как проходит запись" />
         <div className="process-grid">
           {processSteps.map(([number, title, text], index) => (
             <article className="process-step" data-reveal style={{ "--delay": `${index * 80}ms` }} key={title}>
@@ -747,7 +747,7 @@ function App() {
       </section>
 
       <section className="reviews-panel" id="reviews" data-reveal>
-        <SectionHead eyebrow="ОТЗЫВЫ" title="Что говорят клиенты" />
+        <SectionHead eyebrow="отзывы" title="что говорят клиенты" />
         <div className="reviews-grid">
           {reviews.map((review, index) => (
             <article className="review-card" data-reveal style={{ "--delay": `${index * 80}ms` }} key={review.author}>
@@ -767,8 +767,8 @@ function App() {
 
       <section className="faq-panel" data-reveal>
         <div className="faq-copy">
-          <p className="eyebrow">FAQ</p>
-          <h2>Частые вопросы</h2>
+          <p className="eyebrow">faq</p>
+          <h2>частые вопросы</h2>
           <p>Собрали ответы на вопросы, которые чаще всего возникают перед первым визитом.</p>
         </div>
         <div className="faq-list">
@@ -792,8 +792,8 @@ function App() {
 
       <section className="contact-panel" id="contact" data-reveal>
         <div className="contact-copy">
-          <p className="eyebrow">ЗАПИСЬ</p>
-          <h2>Запишитесь на удобное время</h2>
+          <p className="eyebrow">запись</p>
+          <h2>запишитесь на удобное время</h2>
           <p>Оставьте заявку — мы свяжемся с вами и подберём процедуру под ваш запрос.</p>
         </div>
         <form className="booking-form" onSubmit={handleSubmit} noValidate>
@@ -911,13 +911,13 @@ function Header({ className, isMenuOpen, onMenuToggle, onMenuClose }) {
         Clay<span>.</span>
       </a>
       <nav>
-        <a href="#about">О студии</a>
-        <a href="#services">Услуги</a>
-        <a href="#masters">Мастера</a>
-        <a href="#works">Работы</a>
-        <a href="#process">Процесс</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#contact">Контакты</a>
+        <a href="#about">о студии</a>
+        <a href="#services">услуги</a>
+        <a href="#masters">мастера</a>
+        <a href="#works">работы</a>
+        <a href="#process">процесс</a>
+        <a href="#reviews">отзывы</a>
+        <a href="#contact">контакты</a>
       </nav>
       <a className="topbar-button" href="#contact">
         Записаться
@@ -927,13 +927,13 @@ function Header({ className, isMenuOpen, onMenuToggle, onMenuClose }) {
         <span />
       </button>
       <div className="mobile-menu" aria-hidden={!isMenuOpen}>
-        <a href="#about" onClick={onMenuClose}>О студии</a>
-        <a href="#services" onClick={onMenuClose}>Услуги</a>
-        <a href="#masters" onClick={onMenuClose}>Мастера</a>
-        <a href="#works" onClick={onMenuClose}>Работы</a>
-        <a href="#process" onClick={onMenuClose}>Процесс</a>
-        <a href="#reviews" onClick={onMenuClose}>Отзывы</a>
-        <a href="#contact" onClick={onMenuClose}>Контакты</a>
+        <a href="#about" onClick={onMenuClose}>о студии</a>
+        <a href="#services" onClick={onMenuClose}>услуги</a>
+        <a href="#masters" onClick={onMenuClose}>мастера</a>
+        <a href="#works" onClick={onMenuClose}>работы</a>
+        <a href="#process" onClick={onMenuClose}>процесс</a>
+        <a href="#reviews" onClick={onMenuClose}>отзывы</a>
+        <a href="#contact" onClick={onMenuClose}>контакты</a>
         <a className="mobile-menu-cta" href="#contact" onClick={onMenuClose}>Записаться</a>
         <div className="mobile-menu-info">
           <p>Пн–Вс с 9:00 до 23:00</p>
@@ -968,8 +968,8 @@ function ServicesModal({ isOpen, onClose, onBook }) {
           ×
         </button>
         <div className="modal-head">
-          <p className="eyebrow">ПРАЙС</p>
-          <h2 id="services-modal-title">Все услуги Clay</h2>
+          <p className="eyebrow">прайс</p>
+          <h2 id="services-modal-title">все услуги clay</h2>
         </div>
         <div className="price-grid">
           {servicePrices.map((group) => (

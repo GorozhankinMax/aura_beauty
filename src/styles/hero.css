@@ -100,7 +100,7 @@
 }
 
 .brand {
-  font-family: var(--heading-font);
+  font-family: var(--classic-font);
   font-size: 34px;
   font-weight: 700;
   line-height: 1;
@@ -360,7 +360,7 @@
 
 .hero-copy h1 {
   max-width: min(100%, 560px);
-  font-size: clamp(34px, 7vw, 64px);
+  font-size: clamp(32px, 6vw, 56px);
   line-height: 1.02;
   animation: fadeUp 0.8s var(--ease) both;
 }
@@ -460,7 +460,7 @@
 
 .stat strong {
   display: block;
-  font-family: var(--heading-font);
+  font-family: var(--classic-font);
   font-size: clamp(30px, 3vw, 38px);
   line-height: 0.9;
 }

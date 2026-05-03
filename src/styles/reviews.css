@@ -63,8 +63,8 @@
   border-radius: 999px;
   color: #fff6ee;
   background: var(--terracotta);
-  font-family: var(--heading-font);
-  font-size: 24px;
+  font-family: var(--classic-font);
+  font-size: 26px;
   font-weight: 700;
   line-height: 1;
 }

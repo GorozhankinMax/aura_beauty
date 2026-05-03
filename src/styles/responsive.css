@@ -1086,3 +1086,34 @@
     line-height: 1.4;
   }
 }
+
+@media (min-width: 1025px) {
+  :root {
+    --desktop-panel-padding: clamp(32px, 3.2vw, 46px);
+    --desktop-card-gap: clamp(14px, 1.8vw, 20px);
+  }
+
+  .portfolio-panel,
+  .about-panel,
+  .masters-panel,
+  .gallery-panel,
+  .process-panel,
+  .reviews-panel,
+  .faq-panel,
+  .contact-panel {
+    padding: var(--desktop-panel-padding);
+  }
+
+  .panel-head {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .work-row,
+  .masters-track,
+  .gallery-track,
+  .process-grid,
+  .reviews-grid {
+    gap: var(--desktop-card-gap);
+  }
+}

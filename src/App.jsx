@@ -149,31 +149,31 @@ const masters = [
 
 const galleryWorks = [
   {
-    title: "нюдовый маникюр",
+    title: "Нюдовый маникюр",
     text: "Аккуратная форма и спокойный оттенок",
     tag: "NUDE FINISH",
     image: "/work-manicure.png",
   },
   {
-    title: "естественные брови",
+    title: "Естественные брови",
     text: "Мягкая линия без лишней графики",
     tag: "NATURAL SHAPE",
     image: "/work-brows.png",
   },
   {
-    title: "сияние кожи",
+    title: "Сияние кожи",
     text: "Свежесть, мягкость и ровный тон",
     tag: "SKIN GLOW",
     image: "/work-skin.png",
   },
   {
-    title: "образ / макияж",
+    title: "Образ / макияж",
     text: "Деликатные акценты под настроение",
     tag: "SOFT MAKEUP",
     image: "/work-makeup.png",
   },
   {
-    title: "гладкая укладка",
+    title: "Гладкая укладка",
     text: "Ровная форма и естественный блеск волос",
     tag: "SMOOTH HAIR",
     image: "/work-smooth-hair.png",
@@ -398,6 +398,39 @@ function App() {
     return () => {
       window.removeEventListener("scroll", toggleFixedHeader);
       window.removeEventListener("resize", toggleFixedHeader);
+    };
+  }, []);
+
+  useEffect(() => {
+    const heroPanel = document.querySelector(".hero-panel");
+    if (!heroPanel) return undefined;
+
+    let frameId = 0;
+
+    const updateHeroImageShift = () => {
+      frameId = 0;
+
+      const rect = heroPanel.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || 1;
+      const progress = Math.min(Math.max((viewportHeight - rect.top) / (viewportHeight + rect.height), 0), 1);
+      const shift = (progress - 0.5) * 28;
+
+      heroPanel.style.setProperty("--hero-image-scroll", `${shift.toFixed(2)}px`);
+    };
+
+    const queueHeroImageShift = () => {
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(updateHeroImageShift);
+    };
+
+    updateHeroImageShift();
+    window.addEventListener("scroll", queueHeroImageShift, { passive: true });
+    window.addEventListener("resize", queueHeroImageShift);
+
+    return () => {
+      window.removeEventListener("scroll", queueHeroImageShift);
+      window.removeEventListener("resize", queueHeroImageShift);
+      if (frameId) window.cancelAnimationFrame(frameId);
     };
   }, []);
 
@@ -775,7 +808,7 @@ function App() {
 
       <section className="faq-panel" data-reveal>
         <div className="faq-copy">
-          <p className="eyebrow">faq</p>
+          <p className="eyebrow">FAQ</p>
           <h2>частые вопросы</h2>
           <p>Собрали ответы на вопросы, которые чаще всего возникают перед первым визитом.</p>
         </div>

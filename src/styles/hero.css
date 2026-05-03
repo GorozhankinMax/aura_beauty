@@ -415,6 +415,9 @@
   pointer-events: none;
   object-fit: contain;
   object-position: right bottom;
+  transform: translate3d(0, var(--hero-image-scroll, 0px), 0);
+  transition: transform 0.18s linear;
+  will-change: transform;
 }
 
 .stats-strip {

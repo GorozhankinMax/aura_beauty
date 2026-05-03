@@ -120,15 +120,16 @@
 
 .gallery-card-copy {
   display: flex;
-  min-height: 124px;
+  min-height: 112px;
   flex-direction: column;
-  padding: clamp(16px, 1.7vw, 20px);
+  justify-content: flex-start;
+  padding: 18px 20px;
 }
 
 .gallery-card-copy span {
   display: block;
   order: 3;
-  margin-top: auto;
+  margin-top: 14px;
   color: rgba(42, 31, 27, 0.5);
   font-size: 11px;
   font-weight: 700;
@@ -139,17 +140,17 @@
 .gallery-card h3 {
   order: 1;
   margin: 0;
-  font-family: "Manrope", "Inter", Arial, sans-serif;
-  font-size: clamp(16px, 1.4vw, 18px);
-  font-weight: 600;
-  line-height: 1.25;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .gallery-card p {
   order: 2;
-  margin: 8px 0 14px;
+  margin: 7px 0 14px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.45;
 }
 

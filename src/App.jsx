@@ -309,20 +309,38 @@ function App() {
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
+    const hideTimers = new Map();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const pendingTimer = hideTimers.get(entry.target);
+
+          if (pendingTimer) {
+            window.clearTimeout(pendingTimer);
+            hideTimers.delete(entry.target);
+          }
+
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            return;
           }
+
+          const hideTimer = window.setTimeout(() => {
+            entry.target.classList.remove("is-visible");
+            hideTimers.delete(entry.target);
+          }, 180);
+
+          hideTimers.set(entry.target, hideTimer);
         });
       },
-      { threshold: 0.16, rootMargin: "0px 0px -70px 0px" },
+      { threshold: 0.01, rootMargin: "140px 0px 180px 0px" },
     );
 
     elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      hideTimers.forEach((timer) => window.clearTimeout(timer));
+    };
   }, []);
 
   useEffect(() => {

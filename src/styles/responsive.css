@@ -424,17 +424,19 @@
   }
 
   .hero-copy h1 {
-    position: absolute;
-    top: clamp(152px, calc(var(--app-stable-vh) * 24), 220px);
-    left: 0;
-    width: calc(100% + (var(--hero-panel-pad-x) * 2));
-    max-width: none;
-    margin-right: calc(var(--hero-panel-pad-x) * -1);
-    margin-left: calc(var(--hero-panel-pad-x) * -1);
-    margin-top: clamp(18px, 4.2vw, 26px);
-    font-size: clamp(58px, 17vw, 82px);
-    line-height: 0.86;
-    text-align: center;
+  position: absolute;
+  top: clamp(60px, calc(var(--app-stable-vh) * 24), 0px);
+
+  left: 0vw;
+  transform: translateX(-50%);
+
+  width: 120vw;
+  max-width: none;
+  margin: 0;
+
+  font-size: clamp(30px, 9vw, 60px);
+  line-height: 0.86;
+  text-align: left;
   }
 
   .hero-action-group {

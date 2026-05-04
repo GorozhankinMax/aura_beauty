@@ -361,14 +361,17 @@
 .hero-copy h1 {
   position: relative;
   z-index: 1;
-  width: calc(100% + (var(--hero-panel-pad-x) * 2));
+
+  width: 100%;
   max-width: none;
-  margin-right: calc(var(--hero-panel-pad-x) * -1);
-  margin-left: calc(var(--hero-panel-pad-x) * -1);
+
+  margin: 0;
+
   font-size: clamp(56px, 8vw, 94px);
   line-height: 0.88;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
+
   animation: fadeUp 0.8s var(--ease) both;
 }
 
